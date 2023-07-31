@@ -15,7 +15,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   },
 });
 
-// AUTHENTICATE IF CONNECTION WAS MADE OR FAILED
+// AUTHENTICATE IF CONNECTION WAS SUCCESSFUL OR FAILED
 sequelize
   .authenticate()
   .then(() => {
@@ -30,7 +30,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// CONNECTING THE DB TO INDIVIDUAL TABLE ROUTES
+// THIS IS WHERE THE TABLE CREATION IN THE DATABASE OF MYSQL IS TAKING PLACE
+// SEQUELIZE CONNECTING THE DB TO CREATING INDIVIDUAL MODELS TABLE
 db.products = require('./productModel.js')(sequelize, DataTypes);
 db.reviews = require('./reviewModel.js')(sequelize, DataTypes);
 

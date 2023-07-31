@@ -6,7 +6,7 @@ const Review = db.reviews;
 // FUNCTIONS
 
 const addReview = async (req, res) => {
-  const { rating, description } = req.body;
+  //   const { rating, description } = req.body;
   //   const review = await Review.create({
   //     rating,
   //     description,
@@ -40,15 +40,13 @@ const getIndividualReview = async (req, res) => {
 const deleteReview = async (req, res) => {
   let id = req.params.id;
   const deleted = await Review.destroy({ where: { id: id } });
-  res.status(200).send(deleted);
-  console.log('deleted review');
+  res.status(200).send('review is deleted');
 };
 
 const updateReview = async (req, res) => {
   let id = req.params.id;
   const updated = await Review.update(req.body, { where: { id: id } });
   res.status(200).send(updated);
-  console.log('updated');
 };
 
 module.exports = {
