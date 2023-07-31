@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const productRouter = require('./routes/productRoute.js');
 
 const app = express();
 
+// BODY PARSER
 var corOptions = {
-  origin: 'https://localhost/8081',
+  origin: 'https://localhost/8080',
 };
 
 // MIDDLEWARES
@@ -14,6 +16,10 @@ app.use(cors(corOptions));
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+
+// -------------ROUTERS---------------
+// ---------product route---------
+app.use('/api/products', productRouter);
 
 // TESTING API
 
