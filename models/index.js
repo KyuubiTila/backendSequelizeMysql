@@ -32,11 +32,24 @@ db.sequelize = sequelize;
 
 // THIS IS WHERE THE TABLE CREATION IN THE DATABASE OF MYSQL IS TAKING PLACE
 // SEQUELIZE CONNECTING THE DB TO CREATING INDIVIDUAL MODELS TABLE
-db.products = require('./productModel.js')(sequelize, DataTypes);
-db.reviews = require('./reviewModel.js')(sequelize, DataTypes);
+db.product = require('./productModel.js')(sequelize, DataTypes);
+db.review = require('./reviewModel.js')(sequelize, DataTypes);
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log('yes re-sync done');
+});
+
+// 1 TO MANY RELATION
+// THE FOREIGN KEY IS THAT OF THE 1 RELATION
+// THE ALIANCE IS THAT OF THE PASSED FUNCTION
+db.product.hasMany(db.review, {
+  foreignKey: 'product_id',
+  as: 'review',
+});
+
+db.review.belongsTo(db.product, {
+  foreignKey: 'product_id',
+  as: 'product',
 });
 
 module.exports = db;

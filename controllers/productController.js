@@ -3,8 +3,8 @@ const db = require('../models');
 // "Don’t waste your time with explanations; people only hear what they want to hear.” Paulo Coelho
 
 // create main model
-const Product = db.products;
-const Review = db.reviews;
+const Product = db.product;
+const Review = db.review;
 
 // main work
 
@@ -62,6 +62,22 @@ const getPublishedProduct = async (req, res) => {
   res.status(200).send(published);
 };
 
+// 7 CONNECT ONE TO MANY RELATION PRODUCT AND REVIEW
+
+const getProductReview = async (req, res) => {
+  let id = req.params.id;
+  const data = await Product.findAll({
+    include: [
+      {
+        model: Review,
+        as: 'review',
+      },
+    ],
+    where: { id: id },
+  });
+  res.status(200).send(data);
+};
+
 module.exports = {
   addProduct,
   getAllProduct,
@@ -69,4 +85,5 @@ module.exports = {
   updateSingleProduct,
   deleteSingleProduct,
   getPublishedProduct,
+  getProductReview,
 };

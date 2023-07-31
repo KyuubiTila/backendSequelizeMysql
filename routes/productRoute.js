@@ -5,6 +5,7 @@ const {
   updateSingleProduct,
   deleteSingleProduct,
   getPublishedProduct,
+  getProductReview,
 } = require('../controllers/productController.js');
 
 const productRouter = require('express').Router();
@@ -26,5 +27,8 @@ productRouter.delete('/deleteProduct/:id', deleteSingleProduct);
 
 // GET PUBLISHED PRODUCT
 productRouter.get('/publishedProduct', getPublishedProduct);
+
+//GET PRODUCT REVIEWS
+productRouter.get('/productReviews/:id', getProductReview);
 
 module.exports = productRouter;

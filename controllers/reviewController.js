@@ -1,7 +1,7 @@
 const db = require('../models');
 
 // MODEL
-const Review = db.reviews;
+const Review = db.review;
 
 // FUNCTIONS
 

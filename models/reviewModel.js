@@ -1,5 +1,3 @@
-const { products } = require('.');
-
 module.exports = (sequelize, DataTypes) => {
   const Review = sequelize.define('review', {
     rating: {

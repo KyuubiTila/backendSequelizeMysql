@@ -8,19 +8,19 @@ const {
 
 const reviewRouter = require('express').Router();
 
-// ADD PRODUCT
+// ADD REVIEW
 reviewRouter.post('/addReview', addReview);
 
-// GET ALL PRODUCT
+// GET ALL REVIEW
 reviewRouter.get('/allReview', getAllReviews);
 
-//GET SINGLE PRODUCT
+//GET SINGLE REVIEW
 reviewRouter.get('/oneReview/:id', getIndividualReview);
 
-// DELETE SINGLE PRODUCT
+// DELETE SINGLE REVIEW
 reviewRouter.delete('/deleteReview/:id', deleteReview);
 
-// UPDATE SINGLE PRODUCT
+// UPDATE SINGLE REVIEW
 reviewRouter.put('/updateReview/:id', updateReview);
 
 module.exports = reviewRouter;
