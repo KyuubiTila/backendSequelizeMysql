@@ -1,5 +1,7 @@
 const db = require('../models');
 
+// "Don’t waste your time with explanations; people only hear what they want to hear.” Paulo Coelho
+
 // create main model
 const Product = db.products;
 const Review = db.reviews;

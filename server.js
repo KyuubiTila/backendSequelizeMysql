@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const productRouter = require('./routes/productRoute.js');
+const reviewRouter = require('./routes/reviewRoute.js');
 
 const app = express();
 
@@ -20,6 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 // -------------ROUTERS---------------
 // ---------product route---------
 app.use('/api/products', productRouter);
+
+// ---------review route---------
+app.use('/api/reviews', reviewRouter);
 
 // TESTING API
 
