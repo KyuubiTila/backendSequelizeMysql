@@ -7,7 +7,7 @@ const app = express();
 
 // BODY PARSER
 var corOptions = {
-  origin: 'https://localhost/8080',
+  origin: '*',
 };
 
 // MIDDLEWARES
