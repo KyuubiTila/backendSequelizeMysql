@@ -6,18 +6,9 @@ const Review = db.review;
 // FUNCTIONS
 
 const addReview = async (req, res) => {
-  //   const { rating, description } = req.body;
-  //   const review = await Review.create({
-  //     rating,
-  //     description,
-  //   });
-
-  //   res.json({
-  //     status: 'success',
-  //     data: review,
-  //   });
-
+  const id = req.params.id;
   const data = {
+    product_id: id,
     rating: req.body.rating,
     description: req.body.description,
   };

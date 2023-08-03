@@ -9,7 +9,7 @@ const {
 const reviewRouter = require('express').Router();
 
 // ADD REVIEW
-reviewRouter.post('/addReview', addReview);
+reviewRouter.post('/addReview/:id', addReview);
 
 // GET ALL REVIEW
 reviewRouter.get('/allReview', getAllReviews);

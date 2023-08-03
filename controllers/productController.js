@@ -63,7 +63,6 @@ const getPublishedProduct = async (req, res) => {
 };
 
 // 7 CONNECT ONE TO MANY RELATION PRODUCT AND REVIEW
-
 const getProductReview = async (req, res) => {
   let id = req.params.id;
   const data = await Product.findAll({
