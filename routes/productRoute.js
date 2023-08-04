@@ -6,12 +6,13 @@ const {
   deleteSingleProduct,
   getPublishedProduct,
   getProductReview,
+  upload,
 } = require('../controllers/productController.js');
 
 const productRouter = require('express').Router();
 
 // ADD PRODUCT
-productRouter.post('/addproduct', addProduct);
+productRouter.post('/addproduct', upload, addProduct);
 
 // GET ALL PRODUCT
 productRouter.get('/allProduct', getAllProduct);

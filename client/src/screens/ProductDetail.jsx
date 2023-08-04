@@ -11,6 +11,7 @@ const ProductDetail = () => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
   const [reviews, setReviews] = useState([]);
+  const [image, setImage] = useState('');
 
   const [rating, setRating] = useState(0);
   const [described, setDescribed] = useState('');
@@ -32,6 +33,7 @@ const ProductDetail = () => {
         setPrice(data[0].price);
         setDescription(data[0].description);
         setReviews(data[0].review);
+        setImage(data[0].image);
       } catch (error) {
         console.error('Error fetching data:', error);
         // Handle errors
@@ -69,6 +71,8 @@ const ProductDetail = () => {
     <>
       <div className="m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div className="p-5">
+          <img src={'http://localhost:8080/' + image} alt="" />
+
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Phone Brand : {title}
           </h5>

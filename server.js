@@ -25,6 +25,9 @@ app.use('/api/products', productRouter);
 // ---------review route---------
 app.use('/api/reviews', reviewRouter);
 
+// static images
+app.use('/Images', express.static('./Images'));
+
 // TESTING API
 
 app.get('/', (req, res) => {

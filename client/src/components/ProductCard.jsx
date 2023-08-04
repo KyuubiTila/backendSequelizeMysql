@@ -2,9 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const ProductCard = ({ product }) => {
-  const { id, title, price, description } = product;
+  const { id, title, price, description, image } = product;
+  console.log(image);
   return (
     <div className="m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <Link to={`/productDetail/${id}`}>
+        <img src={'http://localhost:8080/' + image} alt="" />
+      </Link>
       <div className="p-5">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Phone Brand : {title}

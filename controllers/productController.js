@@ -1,5 +1,9 @@
 const db = require('../models');
 
+// images upload
+const multer = require('multer');
+const path = require('path');
+
 // "Don’t waste your time with explanations; people only hear what they want to hear.” Paulo Coelho
 
 // create main model
@@ -13,6 +17,10 @@ const addProduct = async (req, res) => {
   //   const { title, price, description, published } = req.body;
 
   let info = {
+    // for multiple files
+    // image: req.files.path,
+
+    image: req.file.path,
     title: req.body.title,
     price: req.body.price,
     description: req.body.description,
@@ -77,6 +85,29 @@ const getProductReview = async (req, res) => {
   res.status(200).send(data);
 };
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'Images');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000000 },
+  fileFilter: (req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png|gif/;
+    const mimeType = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
+    if (mimeType && extname) {
+      return cb(null, true);
+    }
+    cb('give proper file upload');
+  },
+}).single('image');
+
 module.exports = {
   addProduct,
   getAllProduct,
@@ -85,4 +116,5 @@ module.exports = {
   deleteSingleProduct,
   getPublishedProduct,
   getProductReview,
+  upload,
 };
